@@ -92,4 +92,6 @@ app.use(function(err, req, res, next) {
 });
 server.listen(5050,function(){
   debug("listen on port",5050)
+  console.log("代码上传服务器监听端口:",5050);
+  console.log("代码上传路径:",base_path)
 });
