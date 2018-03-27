@@ -2,17 +2,29 @@
 
 > A Vue.js project
 
-## Build Setup
+## 安装
 
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
+```bash
+git clone https://github.com/RainboyOnlineJudge/code_upload_server
+cd code_upload_server
+npm install -g
+# 不要使用cnpm
 ```
 
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## 使用
+
+```bash
+codeupload [path]
+```
+
+例子:
+
+```bash
+codeupload # 不加path参数 上传路径为当前路径
+codeupload ../a/b  # 相对路径 
+codeupload /a/b    # 绝对路径 
+```
+
+## LICENSE
+
+[WTFPL](https://github.com/anak10thn/WTFPL),enjoy it!
