@@ -1,6 +1,7 @@
-# frontend
+# code_upload_server
 
-> A Vue.js project
+ > SCYZ NOI TEAM 比较比赛代码上传系统
+ > 可以不用U盘来收代码了
 
 ## 安装
 
