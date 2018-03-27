@@ -1,6 +1,6 @@
 # code_upload_server
 
- > SCYZ NOI TEAM 比较比赛代码上传系统
+ > SCYZ NOI TEAM 比赛代码上传系统
  > 可以不用U盘来收代码了
 
 ## 安装
