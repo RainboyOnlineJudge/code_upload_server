@@ -1,9 +1,10 @@
-#!/bin/env node
+#!/usr/bin/env node
 var express = require('express');
 var path = require('path');
 var fs = require('fs')
 var logger = require('morgan');
 var bodyParser = require('body-parser');
+var favicon = require('serve-favicon')
 var compression = require('compression');
 var debug = require('debug')('debug')
 var cors  = require('cors')
@@ -52,6 +53,8 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.use(favicon(path.join(__dirname, 'src/assets', 'favicon.ico')))
+
 
 // enable all cors
 if (process.env.DEBUG){
@@ -60,7 +63,7 @@ if (process.env.DEBUG){
 }
 
 //主页
-app.use(express.static("./dist"))
+app.use(express.static(path.join(__dirname,"dist")))
 
 
 //上传
@@ -90,8 +93,22 @@ app.use(function(err, req, res, next) {
     err:err.message
   })
 });
+
+function getIPAdress(){
+    var interfaces = require('os').networkInterfaces();
+    for(var devName in interfaces){
+          var iface = interfaces[devName];
+          for(var i=0;i<iface.length;i++){
+               var alias = iface[i];
+               if(alias.family === 'IPv4' && alias.address !== '127.0.0.1' && !alias.internal){
+                     return alias.address;
+               }
+          }
+    }
+}
+
 server.listen(5050,function(){
   debug("listen on port",5050)
-  console.log("代码上传服务器监听端口:",5050);
+  console.log("代码上传服务器监听在:",getIPAdress()+":"+5050);
   console.log("代码上传路径:",base_path)
 });
